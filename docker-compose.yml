@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+    us:
+        build:
+            context: ./us
+            dockerfile: Dockerfile-scratch
+        image: us_app1
+        depends_on:
+            - db
+        links:
+            - db
+        environment:
+            - DB_HOST=db
+            - DB_NAME=ap1
+            - DB_USER=us
+            - DB_PASSWORD=password
+    db:
+        build: docker/db
+        environment:
+            - POSTGRES_USER=us
+            - POSTGRES_DB=app1
+            - POSTGRES_PASSWORD=password
+            - PGDATA=/var/lib/postgresql/data/pgdata
+        ports:
+            - "5432:5432"
+        volumes:
+            # Having a named volume is enough to have persistence
+            - postgresql-data:/var/lib/postgresql/data/pgdata
+
+volumes:
+    postgresql-data:
+        driver: local
