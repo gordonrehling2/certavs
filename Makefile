@@ -8,11 +8,14 @@ dep:
 lint:
 	golint $(go list ./... | grep -v /vendor/)
 
-dbuild:
+dbuild: build
 	docker build -t certavs .
 
-drun:
+drun: dbuild
 	docker run -it --rm --name certavs certavs
 
+build:
+	env GOOS=linux GOARCH=arm go build certavs.go
+
 run: 
-	go run main.go
+	go run certavs.go

@@ -1,20 +1,6 @@
 version: '2'
 
 services:
-    us:
-        build:
-            context: ./certavs
-            dockerfile: Dockerfile-scratch
-        image: certavs
-        depends_on:
-            - db
-        links:
-            - db
-        environment:
-            - DB_HOST=db
-            - DB_NAME=ap1
-            - DB_USER=us
-            - DB_PASSWORD=password
     db:
         build: docker/db
         environment:

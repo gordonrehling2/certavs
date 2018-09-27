@@ -1,9 +1,8 @@
-FROM golang:1.11
+FROM scratch
 
-WORKDIR /go/src/certavs
-COPY . .
+WORKDIR /certavs
 
-RUN go get -d -v ./...
-RUN go install -v ./...
+COPY certavs .
+COPY config.yaml .
 
-CMD ["certavs"]
+CMD ["/certavs/certavs"]
