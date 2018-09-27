@@ -14,5 +14,5 @@ dbuild:
 drun:
 	docker run -it --rm --name certavs certavs
 
-run: lint
+run: 
 	go run main.go

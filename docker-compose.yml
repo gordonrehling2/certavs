@@ -1,11 +1,11 @@
-version: '3'
+version: '2'
 
 services:
     us:
         build:
-            context: ./us
+            context: ./certavs
             dockerfile: Dockerfile-scratch
-        image: us_app1
+        image: certavs
         depends_on:
             - db
         links:
@@ -18,8 +18,8 @@ services:
     db:
         build: docker/db
         environment:
-            - POSTGRES_USER=us
-            - POSTGRES_DB=app1
+            - POSTGRES_USER=certavs
+            - POSTGRES_DB=certavs
             - POSTGRES_PASSWORD=password
             - PGDATA=/var/lib/postgresql/data/pgdata
         ports:
