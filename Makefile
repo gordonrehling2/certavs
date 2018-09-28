@@ -14,6 +14,10 @@ dbuild: build
 drun: dbuild
 	docker run -it --rm --name certavs certavs
 
+dcompose:
+	docker-compose up
+
+
 build:
 	env GOOS=linux GOARCH=arm go build certavs.go
 

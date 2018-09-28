@@ -1,8 +1,8 @@
-version: '2'
+version: '3'
 
 services:
     db:
-        build: docker/db
+        build: ./docker/db
         environment:
             - POSTGRES_USER=certavs
             - POSTGRES_DB=certavs

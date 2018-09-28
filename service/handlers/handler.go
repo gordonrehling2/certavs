@@ -6,13 +6,14 @@ import (
 	"encoding/json"
 	"github.com/julienschmidt/httprouter"
 	"github.com/gordonrehling2/certavs/service"
+	"log"
 )
 
 type Handler struct {
-	RFE service.RfeService
+	RFE service.IRfeService
 }
 
-func NewHandler(rfe service.RfeService) *Handler {
+func NewHandler(rfe service.IRfeService) *Handler {
 	return &Handler {
 		RFE: rfe,
 	}
@@ -20,7 +21,12 @@ func NewHandler(rfe service.RfeService) *Handler {
 
 func (h *Handler) RfeList() httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-
+		list := h.RFE.RfeList()
+		json, err := json.Marshal(list)
+		if err != nil {
+			log.Fatalf("unmarshal rfelist failed %+v\n", err)
+		}
+		fmt.Printf("rfelist json %s\n", json)
 	}
 }
 

@@ -13,14 +13,14 @@ type Customer struct {
 }
 
 type RFE struct {
-	rfeId int32
+	RfeId int32
 	createdTimestamp	time.Time
 	submitter Customer
 	moderatedBy Moderator
 	product string
 	moderated bool
 	idea string
-	description string
+	Description string
 	status string
 	votes int32
 }

@@ -2,14 +2,14 @@ api:
   port: 8080
 db:
   encryption_key: ThirtyTwoCharLongAESCryptoString
-  host: api-issa-payments-postgresql.db.internal
-  name: api_issa_payments
-  password: api_issa_payments
+  host: localhost
+  name: certavs
+  password: password
   port: 5432
   ssl_mode: disable
   timeout_seconds: 10
   type: postgres
-  user: api_issa_payments
+  user: certavs
 logs:
   access: "./logs/certavs-access.log"
   app: "./logs/certavs-application.log"

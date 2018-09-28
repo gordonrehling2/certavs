@@ -23,9 +23,8 @@ func NewRouter(config config.Config) *Router {
 	}
 }
 
-func (r *Router) Run() {
+func (r *Router) Run(rfeService service.IRfeService) {
 	route := httprouter.New()
-	rfeService := service.RfeService{}
 	handler := handlers.NewHandler(rfeService)
 
 	route.GET("/healthcheck", handler.HealthCheck())
